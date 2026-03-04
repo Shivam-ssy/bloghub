@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} — BlogHub{% endblock %}
+
+{% block content %}
+<div class="post-detail-wrap">
+    {% if post.image %}
+    <img class="post-hero" src="{{ post.image.url }}" alt="{{ post.title }}">
+    {% endif %}
+
+    <div class="post-tags">
+        {% for tag in post.tags.all %}
+        <span class="post-tag">{{ tag.name }}</span>
+        {% endfor %}
+    </div>
+
+    <h1 class="post-title-big">{{ post.title }}</h1>
+    <p class="post-info-text">{{ post.info }}</p>
+
+
+
+    <div class="post-body">{{ post.description|linebreaks }}</div>
+
+    {% if user == post.author %}
+    <div style="display:flex; gap:12px; margin-top:40px; padding-top:32px; border-top:1px solid var(--border);">
+        <a href="{% url 'post_edit' post.pk %}" class="view-more" style="margin:0; display:inline-block;">Edit Post</a>
+        <form method="post" action="{% url 'post_delete' post.pk %}">
+            {% csrf_token %}
+            <button type="submit" class="view-more" style="background:linear-gradient(135deg,#c62828,#e53935); box-shadow:0 4px 15px rgba(198,40,40,0.4);" onclick="return confirm('Delete?')">Delete</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <div style="margin-top:40px;">
+        <a href="{% url 'home_' %}" style="color:var(--green-bright); text-decoration:none; font-size:0.9rem; font-weight:600;">← Back to all posts</a>
+    </div>
+</div>
+{% endblock %}

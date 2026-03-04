@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface-2: #1c2430;
+    --border: rgba(255, 255, 255, 0.07);
+    --green-primary: #3fb950;
+    --green-glow: rgba(63, 185, 80, 0.15);
+    --green-subtle: rgba(63, 185, 80, 0.08);
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+    --text-muted: #6e7681;
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Layout ── */
+.detail-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+    animation: fadeUp 0.6s ease-out both;
+}
+
+/* ── Back Button ── */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.2s ease, gap 0.2s ease;
+    margin-bottom: 3rem;
+    letter-spacing: 0.02em;
+}
+
+.back-button::before {
+    content: '←';
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+    color: var(--green-primary);
+    gap: 0.6rem;
+}
+
+.back-button:hover::before {
+    transform: translateX(-3px);
+}
+
+/* ── Header ── */
+.detail-header {
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.1s ease-out both;
+}
+
+.detail-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+}
+
+/* ── Meta ── */
+.detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.detail-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.detail-meta-item span:first-child {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Divider between meta items */
+.detail-meta-item + .detail-meta-item::before {
+    content: '·';
+    margin-right: 1.5rem;
+    color: var(--text-muted);
+}
+
+/* ── Tags ── */
+.detail-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.tag {
+    background: var(--green-subtle);
+    border: 1px solid rgba(63, 185, 80, 0.2);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--green-primary);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.tag:hover {
+    background: rgba(63, 185, 80, 0.15);
+    border-color: rgba(63, 185, 80, 0.4);
+}
+
+/* ── Divider ── */
+.detail-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+}
+
+/* ── Image ── */
+.detail-image-wrapper {
+    margin: 2.5rem 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    background: var(--surface);
+    animation: fadeUp 0.6s 0.2s ease-out both;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 24px 60px rgba(0,0,0,0.3);
+}
+
+.detail-image {
+    width: 100%;
+    height: 420px;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.detail-image-wrapper:hover .detail-image {
+    transform: scale(1.03);
+}
+
+/* ── Content Cards ── */
+.detail-content,
+.detail-content2 {
+    animation: fadeUp 0.6s 0.3s ease-out both;
+    margin: 2rem 0;
+}
+
+.detail-content {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    transition: border-color 0.3s ease;
+}
+
+.detail-content:hover {
+    border-color: rgba(63, 185, 80, 0.2);
+}
+
+.detail-content2 {
+    padding: 0.5rem 0;
+}
+
+/* ── Typography inside content ── */
+.detail-content p,
+.detail-content2 p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+}
+
+.detail-content p:last-child,
+.detail-content2 p:last-child {
+    margin-bottom: 0;
+}
+
+.detail-content h2,
+.detail-content2 h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 2rem 0 1rem;
+    letter-spacing: -0.01em;
+}
+
+.detail-content h2:first-child,
+.detail-content2 h2:first-child {
+    margin-top: 0;
+}
+
+.detail-content h3,
+.detail-content2 h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 1.5rem 0 0.75rem;
+    letter-spacing: 0.01em;
+}
+
+.detail-content ul,
+.detail-content ol,
+.detail-content2 ul,
+.detail-content2 ol {
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+}
+
+.detail-content li,
+.detail-content2 li {
+    margin-bottom: 0.4rem;
+}
+
+.detail-content a,
+.detail-content2 a {
+    color: var(--green-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(63, 185, 80, 0.4);
+    transition: text-decoration-color 0.2s ease;
+}
+
+.detail-content a:hover,
+.detail-content2 a:hover {
+    text-decoration-color: var(--green-primary);
+}
+
+.detail-content blockquote {
+    border-left: 3px solid var(--green-primary);
+    padding: 0.75rem 1.25rem;
+    margin: 1.5rem 0;
+    background: var(--green-subtle);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+.detail-content code {
+    background: var(--surface-2);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--green-primary);
+    font-family: 'Fira Code', monospace;
+}
+
+/* ── Section label (for "Description" heading style) ── */
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-primary);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .detail-container {
+        padding: 2rem 1.25rem 4rem;
+    }
+
+    .detail-title {
+        font-size: 1.75rem;
+    }
+
+    .detail-image {
+        height: 260px;
+    }
+
+    .detail-content {
+        padding: 1.75rem 1.5rem;
+    }
+
+    .detail-meta {
+        gap: 0.75rem;
+    }
+
+    .detail-meta-item + .detail-meta-item::before {
+        display: none;
+    }
+}

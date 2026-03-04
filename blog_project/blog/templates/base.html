@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}BlogHub{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <h2>BlogHub </h2>
+        <hr>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <hr>
+        <p>© 2026</p>
+    </footer>
+
+</body>
+</html>
