@@ -28,7 +28,9 @@ SECRET_KEY = 'django-insecure-av&5vz_qc(6ik!pfdao+8%#i65ub8y^e2il&!+lsw^%8o36z6#
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+CSRF_TRUSTED_ORIGINS = [
+    "https://bloghub-uhf5.onrender.com"
+]
 
 # Application definition
 
